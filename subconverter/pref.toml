@@ -156,7 +156,7 @@ replace = "$1x"
 write_managed_config = true
 
 # Address prefix for MANAGED-CONFIG info, without the trailing "/".
-managed_config_prefix = "http://127.0.0.1:25500"
+managed_config_prefix = "http://192.168.11.2:25500"
 
 # Managed config update interval in seconds, determine how long the config will be updated.
 config_update_interval = 86400
@@ -164,7 +164,7 @@ config_update_interval = 86400
 # If config_update_strict is set to true, Surge will require a force update after the interval.
 config_update_strict = false
 
-# Device ID to be written to rewrite scripts for some version of Quantumult X 
+# Device ID to be written to rewrite scripts for some version of Quantumult X
 quanx_device_id = ""
 
 [surge_external_proxy]
