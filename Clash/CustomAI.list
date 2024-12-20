@@ -1,5 +1,4 @@
-# 内容：OpenAi
-# 数量：6条
+# 内容：补充AI遗漏规则
 DOMAIN-KEYWORD,openai
 DOMAIN-SUFFIX,ai.com
 DOMAIN-SUFFIX,challenges.cloudflare.com
@@ -11,3 +10,26 @@ DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,hsforms.net
 DOMAIN-SUFFIX,oaistatic.com
 DOMAIN-SUFFIX,oaiusercontent.com
+DOMAIN,generativelanguage.googleapis.com
+DOMAIN,ai.google.dev
+DOMAIN,aida.googleapis.com
+DOMAIN,aistudio.google.com
+DOMAIN,alkalimakersuite-pa.clients6.google.com
+DOMAIN,makersuite.google.com
+DOMAIN-SUFFIX,grok.com
+DOMAIN-SUFFIX,x.ai
+DOMAIN-KEYWORD,notebooklm
+DOMAIN-KEYWORD,aistudio
+DOMAIN-KEYWORD,alkalimakersuite-pa.clients6.google.com
+DOMAIN-KEYWORD,anthropic
+DOMAIN-KEYWORD,chatgpt
+DOMAIN-KEYWORD,claude
+DOMAIN-KEYWORD,cohere
+DOMAIN-KEYWORD,colab
+DOMAIN-KEYWORD,copilot
+DOMAIN-KEYWORD,developerprofiles
+DOMAIN-KEYWORD,generativelanguage
+DOMAIN-KEYWORD,groq
+DOMAIN-KEYWORD,hcompany
+DOMAIN-KEYWORD,openai
+DOMAIN-KEYWORD,openaicom-api
