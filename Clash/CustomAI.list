@@ -1,5 +1,4 @@
-# 内容：OpenAi
-# 数量：6条
+# 内容：补充AI遗漏规则
 DOMAIN-KEYWORD,openai
 DOMAIN-SUFFIX,ai.com
 DOMAIN-SUFFIX,challenges.cloudflare.com
@@ -17,4 +16,5 @@ DOMAIN,aida.googleapis.com
 DOMAIN,aistudio.google.com
 DOMAIN,alkalimakersuite-pa.clients6.google.com
 DOMAIN,makersuite.google.com
-DOMAIN-KEYWORD,grok
+DOMAIN-SUFFIX,grok.com
+DOMAIN-SUFFIX,x.ai
