@@ -23,7 +23,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
     proxy: DIRECT
 
-  OUO:
+  MESL:
     type: http
     # 【请在此处填入你的机场订阅链接】
     url: ""
@@ -99,26 +99,13 @@ proxy-groups:
 
   # --- 链式代理专用前置组 ---
   - name: 🇺🇸 夏威夷NAT前置
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 60
-    tolerance: 20
-    use: [TAG]
-    # 自动筛选出 美国、香港、日本、台湾、新加坡 的节点供NAT使用
-    filter: "(硅谷|洛杉矶|圣何塞|圣克拉拉|西雅图|旧金山|港|HK|hk|Hong Kong|HongKong|hongkong|日|JP|Japan|台|新北|彰化|TW|Taiwan|新加坡|坡|狮城|SG|Singapore).*(1x|1X)"
-
-  # --- 功能分组 ---
-  - name: 💬 AI
     type: select
     proxies:
-      - 🇺🇸 夏威夷NAT
-      - 🚀 节点选择
-      - ♻️ 自动选择
-      - 🇸🇬 狮城节点
       - 🇭🇰 香港节点
+      - 🇸🇬 狮城节点
       - 🇨🇳 台湾节点
       - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
+      - 🇺🇲 美西节点
       - 🇰🇷 韩国节点
       - 🇲🇴 澳门节点
       - 🌐 家宽节点
@@ -128,6 +115,22 @@ proxy-groups:
       - 🇺🇲 低价美国
       - 🇯🇵 低价日本
       - 🇸🇬 低价狮城
+      - 🚀 手动切换
+      - DIRECT
+
+  # --- 功能分组 ---
+  - name: 💬 AI
+    type: fallback
+    interval: 300
+    lazy: false
+    proxies:
+      - 🇺🇸 夏威夷NAT
+      - 🇸🇬 狮城节点
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🌐 家宽节点
       - 🚀 手动切换
       - DIRECT
 
@@ -168,7 +171,7 @@ proxy-groups:
     type: select
     proxies: [🚀 节点选择, ♻️ 自动选择, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🛬 低价节点, 🇭🇰 低价香港, 🇨🇳 低价台湾, 🇺🇲 低价美国, 🇯🇵 低价日本, 🇸🇬 低价狮城, 🚀 手动切换, DIRECT]
 
-  - name: 📲 电报消息
+  - name: 📲 海外社媒
     type: select
     proxies: [🚀 节点选择, ♻️ 自动选择, 🇸🇬 狮城节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🛬 低价节点, 🇭🇰 低价香港, 🇨🇳 低价台湾, 🇺🇲 低价美国, 🇯🇵 低价日本, 🇸🇬 低价狮城, 🚀 手动切换, DIRECT]
 
@@ -309,19 +312,19 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 120
     tolerance: 50
-    use: [OUO]
+    use: [MESL]
     filter: ".*" # 这里根据需要调整，原配置似乎是全选但用于fallback
 
   - name: 🛬 低价手动
     type: select
-    use: [OUO]
+    use: [MESL]
 
   - name: 🇭🇰 低价香港
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 120
     tolerance: 50
-    use: [OUO]
+    use: [MESL]
     filter: "(港|HK|hk|Hong Kong|HongKong|hongkong)" # 原配置没有过滤倍率
 
   - name: 🇨🇳 低价台湾
@@ -329,7 +332,7 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 120
     tolerance: 50
-    use: [OUO]
+    use: [MESL]
     filter: "(台|新北|彰化|TW|Taiwan)"
 
   - name: 🇺🇲 低价美国
@@ -337,7 +340,7 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    use: [OUO]
+    use: [MESL]
     filter: "(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States)"
 
   - name: 🇯🇵 低价日本
@@ -345,7 +348,7 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    use: [OUO]
+    use: [MESL]
     filter: "(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|JP|Japan)"
 
   - name: 🇸🇬 低价狮城
@@ -353,7 +356,7 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    use: [OUO]
+    use: [MESL]
     filter: "(新加坡|坡|狮城|SG|Singapore)"
 
 # ========================
@@ -367,47 +370,62 @@ rule-anchor:
 rule-providers:
   China / Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/cn.mrs"}
   China / IP: {<<: *ip, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geoip/cn.mrs"}
-  AmericanCard: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/chrisjian/ACL4SSR/master/Clash/AmericanCard.list", path: ./ruleset/AmericanCard.list}
-  CustomDirect: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/chrisjian/ACL4SSR/refs/heads/master/Clash/CustomDirect.list", path: ./ruleset/CustomDirect.list}
-  GooglePlay: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/chrisjian/ACL4SSR/master/Clash/GooglePlay.list", path: ./ruleset/GooglePlay.list}
-  Lan: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list", path: ./ruleset/LocalAreaNetwork.list}
-  UnBan: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list", path: ./ruleset/UnBan.list}
-  BanAD: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list", path: ./ruleset/BanAD.list}
-  BanProgramAD: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list", path: ./ruleset/BanProgramAD.list}
-  GoogleFCM: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleFCM.list", path: ./ruleset/GoogleFCM.list}
-  GoogleCN: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/GoogleCN.list", path: ./ruleset/GoogleCN.list}
-  SteamCN: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/SteamCN.list", path: ./ruleset/SteamCN.list}
-  Bing: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Bing.list", path: ./ruleset/Bing.list}
-  OneDrive: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/OneDrive.list", path: ./ruleset/OneDrive.list}
-  Microsoft: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Microsoft.list", path: ./ruleset/Microsoft.list}
-  Apple: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.list", path: ./ruleset/Apple.list}
-  Telegram: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Telegram.list", path: ./ruleset/Telegram.list}
-  OpenAI: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/OpenAi.list", path: ./ruleset/OpenAi.list}
-  Claude: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Claude/Claude.list", path: ./ruleset/Claude.list}
-  Gemini: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Gemini/Gemini.list", path: ./ruleset/Gemini.list}
-  CustomAI: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/chrisjian/ACL4SSR/refs/heads/master/Clash/CustomAI.list", path: ./ruleset/CustomAI.list}
-  AI_General: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/AI.list", path: ./ruleset/AI.list}
-  NetEaseMusic: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/NetEaseMusic.list", path: ./ruleset/NetEaseMusic.list}
-  Epic: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Epic.list", path: ./ruleset/Epic.list}
-  Origin: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Origin.list", path: ./ruleset/Origin.list}
-  Sony: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Sony.list", path: ./ruleset/Sony.list}
-  Steam: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Steam.list", path: ./ruleset/Steam.list}
-  Nintendo: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Nintendo.list", path: ./ruleset/Nintendo.list}
-  YouTube: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTube.list", path: ./ruleset/YouTube.list}
-  TikTok: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/TikTok/TikTok.list", path: ./ruleset/TikTok.list}
-  Netflix: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Netflix.list", path: ./ruleset/Netflix.list}
-  Spotify: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.list", path: ./ruleset/Spotify.list}
-  Bahamut: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Bahamut.list", path: ./ruleset/Bahamut.list}
-  BilibiliHMT: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/BilibiliHMT.list", path: ./ruleset/BilibiliHMT.list}
-  Bilibili: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Bilibili.list", path: ./ruleset/Bilibili.list}
-  ChinaMedia: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaMedia.list", path: ./ruleset/ChinaMedia.list}
-  ProxyMedia: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list", path: ./ruleset/ProxyMedia.list}
-  ProxyGFWlist: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list", path: ./ruleset/ProxyGFWlist.list}
-  ChinaDomain: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list", path: ./ruleset/ChinaDomain.list}
-  Download: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Download.list", path: ./ruleset/Download.list}
-  ChinaIp: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaIp.list", path: ./ruleset/ChinaIp.list}
-  ChinaCompanyIp: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaCompanyIp.list", path: ./ruleset/ChinaCompanyIp.list}
-  ByteDance: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/ByteDance/ByteDance.list", path: ./ruleset/ByteDance.list}
+  AmericanCard: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/chrisjian/ACL4SSR/master/Clash/AmericanCard.list"}
+  CustomDirect: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/chrisjian/ACL4SSR/refs/heads/master/Clash/CustomDirect.list"}
+  GooglePlay: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/chrisjian/ACL4SSR/master/Clash/GooglePlay.list"}
+  Lan: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list"}
+  UnBan: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list"}
+  BanAD: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list"}
+  BanProgramAD: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list"}
+  GoogleFCM: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleFCM.list"}
+  GoogleCN: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/GoogleCN.list"}
+  Bing: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Bing.list"}
+  OneDrive: {<<: *domain, url: "https://gh-proxy.com/raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/onedrive.mrs"}
+  Microsoft: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Microsoft.list"}
+  Apple: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.list"}
+  # Media
+  Telegram / Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/telegram.mrs"}
+  Telegram / IP: {<<: *ip, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geoip/telegram.mrs"}
+  Twitter / Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/x.mrs"}
+  WhatsApp / Domain: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Whatsapp/Whatsapp.list"}
+  Facebook / Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/facebook.mrs"}
+  Reddit / Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/reddit.mrs"}
+  Amazon / Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/amazon.mrs"}
+  # AI
+  OpenAI: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/OpenAi.list"}
+  Claude: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Claude/Claude.list"}
+  Gemini: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Gemini/Gemini.list"}
+  CustomAI: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/chrisjian/ACL4SSR/refs/heads/master/Clash/CustomAI.list"}
+  AI_General: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/AI.list"}
+  # 云音乐
+  NetEaseMusic: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/NetEaseMusic.list"}
+  # Games
+  SteamCN: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/SteamCN.list"}
+  Epic: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Epic.list"}
+  Origin: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Origin.list"}
+  Sony: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Sony.list"}
+  Steam: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Steam.list"}
+  Nintendo: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Nintendo.list"}
+  Blizzard / Domain: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Blizzard/Blizzard.list"}
+  UBI / Domain: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/UBI/UBI.list"}
+  PlayStation / Domain: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/PlayStation/PlayStation.list"}
+  # 流媒体
+  YouTube: {<<: *domain, url: "https://gh-proxy.com/raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
+  TikTok: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/TikTok/TikTok.list"}
+  Netflix: {<<: *domain, url: "https://gh-proxy.com/raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"}
+  Spotify: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.list"}
+  Bahamut: {<<: *domain, url: "https://gh-proxy.com/raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bahamut.mrs"}
+  BilibiliHMT: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/BilibiliHMT.list"}
+  Bilibili: {<<: *domain, url: "https://gh-proxy.com/raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bilibili.mrs"}
+  Disney / Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/disney.mrs"}
+  HBO / Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/hbo.mrs"}
+  # ChinaMedia: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaMedia.list"}
+  # ProxyMedia: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list"}
+  Global / Domain: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Global/Global.list"}
+  ProxyGFWlist: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list"}
+  Private / Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/private.mrs"}
+  Download: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Download.list"}
+  ByteDance: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/ByteDance/ByteDance.list"}
 
 # ========================
 # 6. 规则匹配 (路由逻辑)
@@ -428,7 +446,13 @@ rules:
   - RULE-SET,OneDrive,Ⓜ️ 微软云盘
   - RULE-SET,Microsoft,Ⓜ️ 微软服务
   - RULE-SET,Apple,🍎 苹果服务
-  - RULE-SET,Telegram,📲 电报消息
+  - RULE-SET,Telegram / Domain,📲 海外社媒
+  - RULE-SET,Telegram / IP,📲 海外社媒
+  - RULE-SET,Twitter / Domain,📲 海外社媒
+  - RULE-SET,WhatsApp / Domain,📲 海外社媒
+  - RULE-SET,Facebook / Domain,📲 海外社媒
+  - RULE-SET,Reddit / Domain,📲 海外社媒
+  - RULE-SET,Amazon / Domain,📲 海外社媒
   - RULE-SET,OpenAI,💬 AI
   - RULE-SET,Claude,💬 AI
   - RULE-SET,Gemini,💬 AI
@@ -440,20 +464,22 @@ rules:
   - RULE-SET,Sony,🎮 游戏平台
   - RULE-SET,Steam,🎮 游戏平台
   - RULE-SET,Nintendo,🎮 游戏平台
+  - RULE-SET,UBI / Domain,🎮 游戏平台
+  - RULE-SET,PlayStation / Domain,🎮 游戏平台
+  - RULE-SET,Blizzard / Domain,🎮 游戏平台
   - RULE-SET,YouTube,📹 油管视频
   - RULE-SET,TikTok,👯‍♂️ TikTok
   - RULE-SET,Netflix,🎥 奈飞等流媒体
   - RULE-SET,Spotify,🎥 奈飞等流媒体
+  - RULE-SET,Disney / Domain,🎥 奈飞等流媒体
+  - RULE-SET,HBO / Domain,🎥 奈飞等流媒体
   - RULE-SET,Bahamut,📺 巴哈姆特
   - RULE-SET,BilibiliHMT,📺 哔哩哔哩
   - RULE-SET,Bilibili,📺 哔哩哔哩
-  - RULE-SET,ChinaMedia,🌏 国内媒体
-  - RULE-SET,ProxyMedia,🌍 国外媒体
+  - RULE-SET,Global / Domain,🌍 国外媒体
   - RULE-SET,ProxyGFWlist,🚀 节点选择
-  - RULE-SET,ChinaDomain,🎯 全球直连
+  - RULE-SET,Private / Domain,🎯 全球直连
   - RULE-SET,Download,🎯 全球直连
-  - RULE-SET,ChinaIp,🎯 全球直连
-  - RULE-SET,ChinaCompanyIp,🎯 全球直连
   - RULE-SET,ByteDance,🎯 全球直连
   - RULE-SET,China / Domain,🎯 全球直连
   - RULE-SET,China / IP,🎯 全球直连,no-resolve
