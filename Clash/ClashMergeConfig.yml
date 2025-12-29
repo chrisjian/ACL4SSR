@@ -8,6 +8,8 @@ mode: Rule
 log-level: info
 external-controller: :9090
 
+ipv6: true
+
 # ========================
 # 2. 节点源 (替代 Subconverter 的部分)
 # ========================
