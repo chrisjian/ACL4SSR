@@ -397,6 +397,7 @@ rule-providers:
   OpenAI: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/OpenAi.list"}
   Claude: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Claude/Claude.list"}
   Gemini: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Gemini/Gemini.list"}
+  Gemini / Domain: {<<: *domain, url: "https://gh-proxy.com/raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/google-gemini.mrs"}
   CustomAI: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/chrisjian/ACL4SSR/refs/heads/master/Clash/CustomAI.list"}
   AI_General: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/AI.list"}
   # 云音乐
@@ -458,6 +459,7 @@ rules:
   - RULE-SET,OpenAI,💬 AI
   - RULE-SET,Claude,💬 AI
   - RULE-SET,Gemini,💬 AI
+  - RULE-SET,Gemini / Domain,💬 AI
   - RULE-SET,CustomAI,💬 AI
   - RULE-SET,AI_General,💬 AI
   - RULE-SET,NetEaseMusic,🎶 网易音乐
@@ -481,7 +483,7 @@ rules:
   - RULE-SET,Global / Domain,🌍 国外媒体
   - RULE-SET,ProxyGFWlist,🚀 节点选择
   - RULE-SET,Private / Domain,🎯 全球直连
-  - RULE-SET,Download,🎯 全球直连
+  # - RULE-SET,Download,🎯 全球直连
   - RULE-SET,ByteDance,🎯 全球直连
   - RULE-SET,China / Domain,🎯 全球直连
   - RULE-SET,China / IP,🎯 全球直连,no-resolve
