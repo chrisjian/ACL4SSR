@@ -475,6 +475,12 @@ rules:
   - RULE-SET,Facebook / Domain,📲 海外社媒
   - RULE-SET,Reddit / Domain,📲 海外社媒
   - RULE-SET,Amazon / Domain,📲 海外社媒
+  - RULE-SET,YouTube,📹 油管视频
+  - RULE-SET,TikTok,👯‍♂️ TikTok
+  - RULE-SET,Netflix,🎥 奈飞等流媒体
+  - RULE-SET,Spotify,🎥 奈飞等流媒体
+  - RULE-SET,Disney / Domain,🎥 奈飞等流媒体
+  - RULE-SET,HBO / Domain,🎥 奈飞等流媒体
   - RULE-SET,OpenAI,💬 AI
   - RULE-SET,Claude,💬 AI
   - RULE-SET,Gemini,💬 AI
@@ -492,12 +498,6 @@ rules:
   - RULE-SET,UBI / Domain,🎮 游戏平台
   - RULE-SET,PlayStation / Domain,🎮 游戏平台
   - RULE-SET,Blizzard / Domain,🎮 游戏平台
-  - RULE-SET,YouTube,📹 油管视频
-  - RULE-SET,TikTok,👯‍♂️ TikTok
-  - RULE-SET,Netflix,🎥 奈飞等流媒体
-  - RULE-SET,Spotify,🎥 奈飞等流媒体
-  - RULE-SET,Disney / Domain,🎥 奈飞等流媒体
-  - RULE-SET,HBO / Domain,🎥 奈飞等流媒体
   - RULE-SET,Bahamut,📺 巴哈姆特
   - RULE-SET,BilibiliHMT,📺 哔哩哔哩
   - RULE-SET,Bilibili,📺 哔哩哔哩
