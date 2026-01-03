@@ -121,20 +121,6 @@ proxy-groups:
       - DIRECT
 
   # --- 功能分组 ---
-  - name: 💬 AI
-    type: fallback
-    interval: 300
-    lazy: false
-    proxies:
-      - 🇺🇸 夏威夷NAT
-      - 🇸🇬 狮城节点
-      - 🇭🇰 香港节点
-      - 🇨🇳 台湾节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🌐 家宽节点
-      - 🚀 手动切换
-      - DIRECT
 
   - name: 🎮 GooglePlay
     type: select
@@ -168,6 +154,36 @@ proxy-groups:
   - name: 📺 哔哩哔哩
     type: select
     proxies: [🎯 全球直连, 🇨🇳 台湾节点, 🇭🇰 香港节点, 🇲🇴 澳门节点, 🇨🇳 低价台湾, 🇭🇰 低价香港]
+
+  - name: 💬 AI
+    type: fallback
+    interval: 300
+    lazy: false
+    proxies:
+      - 🇺🇸 夏威夷NAT
+      - 🇸🇬 狮城节点
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🌐 家宽节点
+      - 🚀 手动切换
+      - DIRECT
+
+  - name: 🌐 Google服务
+    type: fallback
+    interval: 300
+    lazy: false
+    proxies:
+      - 🇺🇸 夏威夷NAT
+      - 🇸🇬 狮城节点
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🌐 家宽节点
+      - 🚀 手动切换
+      - DIRECT
 
   - name: 🌍 国外媒体
     type: select
@@ -400,6 +416,9 @@ rule-providers:
   Gemini / Domain: {<<: *domain, url: "https://gh-proxy.com/raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/google-gemini.mrs"}
   CustomAI: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/chrisjian/ACL4SSR/refs/heads/master/Clash/CustomAI.list"}
   AI_General: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/AI.list"}
+  # Google服务
+  Google / Domain: {<<: *domain, url: "https://gh-proxy.com/raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
+  Google / IP: {<<: *ip, url: "https://gh-proxy.com/raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"}
   # 云音乐
   NetEaseMusic: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/NetEaseMusic.list"}
   # Games
@@ -462,6 +481,8 @@ rules:
   - RULE-SET,Gemini / Domain,💬 AI
   - RULE-SET,CustomAI,💬 AI
   - RULE-SET,AI_General,💬 AI
+  - RULE-SET,Google / Domain,🌐 Google服务
+  - RULE-SET,Google / IP,🌐 Google服务
   - RULE-SET,NetEaseMusic,🎶 网易音乐
   - RULE-SET,Epic,🎮 游戏平台
   - RULE-SET,Origin,🎮 游戏平台
