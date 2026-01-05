@@ -67,163 +67,110 @@ proxy-groups:
     type: fallback
     interval: 120
     lazy: false
-    proxies:
-      - 🇭🇰 香港节点
-      - 🇨🇳 台湾节点
-      - 🇸🇬 狮城节点
-      - 🇯🇵 日本节点
-      - ♻️ 自动选择
-      - 🇺🇲 美国节点
-      - 🇰🇷 韩国节点
-      - 🇲🇴 澳门节点
-      - 🌐 家宽节点
-      - 🛬 低价节点
-      - 🇭🇰 低价香港
-      - 🇨🇳 低价台湾
-      - 🇺🇲 低价美国
-      - 🇯🇵 低价日本
-      - 🇸🇬 低价狮城
-      - 🚀 手动切换
-      - 🇺🇸 夏威夷NAT
-      - DIRECT
+    proxies: [低倍率节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, ♻️ 自动选择, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🚀 手动切换, 🇺🇸 夏威夷NAT, DIRECT]
 
   - name: 🚀 手动切换
     type: select
-    proxies: [🇺🇸 夏威夷NAT]
-    use: [TAG] # 引入机场所有节点
+    include-all: true # 引入机场所有节点
 
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 120
     tolerance: 50
-    use: [TAG]
+    include-all: true
     # 排除直连、拒绝和倍率节点(可选)
-    filter: "^((?!(直连|拒绝)).)*.*(1x|1X)"
+    filter: "^((?!(直连|拒绝)).)*.*((?!2\\.[0-9]x).)*"
 
   # --- 链式代理专用前置组 ---
   - name: 🇺🇸 夏威夷NAT前置
     type: fallback
     interval: 120
     lazy: false
-    proxies:
-      - 🇭🇰 香港节点
-      - 🇸🇬 狮城节点
-      - 🇨🇳 台湾节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美西节点
-      - 🇰🇷 韩国节点
-      - 🇲🇴 澳门节点
-      - 🌐 家宽节点
-      - 🛬 低价节点
-      - 🇭🇰 低价香港
-      - 🇨🇳 低价台湾
-      - 🇺🇲 低价美国
-      - 🇯🇵 低价日本
-      - 🇸🇬 低价狮城
-      - 🚀 手动切换
-      - DIRECT
+    proxies: [🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇺🇲 美西节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🚀 手动切换, DIRECT]
 
   # --- 功能分组 ---
 
   - name: 🎮 GooglePlay
     type: select
-    proxies: [🚀 节点选择, ♻️ 自动选择, 🇸🇬 狮城节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🛬 低价节点, 🇭🇰 低价香港, 🇨🇳 低价台湾, 🇺🇲 低价美国, 🇯🇵 低价日本, 🇸🇬 低价狮城, 🚀 手动切换, DIRECT]
+    proxies: [DIRECT, 🚀 节点选择, ♻️ 自动选择, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🚀 手动切换]
 
   - name: 💲 美卡
     type: select
-    proxies: [🚀 节点选择, ♻️ 自动选择, 🇸🇬 狮城节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🛬 低价节点, 🇭🇰 低价香港, 🇨🇳 低价台湾, 🇺🇲 低价美国, 🇯🇵 低价日本, 🇸🇬 低价狮城, 🚀 手动切换, DIRECT]
+    proxies: [DIRECT, 🚀 节点选择, ♻️ 自动选择, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🚀 手动切换]
 
   - name: 📹 油管视频
     type: select
-    proxies: [🚀 节点选择, ♻️ 自动选择, 🇸🇬 狮城节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🛬 低价节点, 🇭🇰 低价香港, 🇨🇳 低价台湾, 🇺🇲 低价美国, 🇯🇵 低价日本, 🇸🇬 低价狮城, 🚀 手动切换, DIRECT]
+    proxies: [🚀 节点选择, ♻️ 自动选择, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🚀 手动切换, DIRECT]
 
   - name: 👯‍♂️ TikTok
     type: select
-    proxies: [🚀 节点选择, ♻️ 自动选择, 🇸🇬 狮城节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🛬 低价节点, 🇭🇰 低价香港, 🇨🇳 低价台湾, 🇺🇲 低价美国, 🇯🇵 低价日本, 🇸🇬 低价狮城, 🚀 手动切换, DIRECT]
+    proxies: [🇨🇳 台湾节点, 🚀 节点选择, ♻️ 自动选择, 🇭🇰 香港节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🚀 手动切换, DIRECT]
 
   - name: 🎥 奈飞等流媒体
     type: select
-    proxies: [🎥 奈飞节点, 🚀 节点选择, ♻️ 自动选择, 🇸🇬 狮城节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🛬 低价节点, 🇭🇰 低价香港, 🇨🇳 低价台湾, 🇺🇲 低价美国, 🇯🇵 低价日本, 🇸🇬 低价狮城, 🚀 手动切换, DIRECT]
+    proxies: [🎥 奈飞节点, 🚀 节点选择, ♻️ 自动选择, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🚀 手动切换, DIRECT]
 
   - name: 🎥 奈飞节点
     type: select
-    use: [TAG]
+    include-all: true
     filter: "((?!.*0\\.\\d[xX]).*)" # 排除低倍率节点
 
   - name: 📺 巴哈姆特
     type: select
-    proxies: [🇨🇳 台湾节点, 🇨🇳 低价台湾, 🚀 节点选择, 🚀 手动切换, DIRECT]
+    proxies: [🇨🇳 台湾节点, 🚀 节点选择, 🚀 手动切换, DIRECT]
 
   - name: 📺 哔哩哔哩
     type: select
-    proxies: [🎯 全球直连, 🇨🇳 台湾节点, 🇭🇰 香港节点, 🇲🇴 澳门节点, 🇨🇳 低价台湾, 🇭🇰 低价香港]
+    proxies: [DIRECT, 🇨🇳 台湾节点, 🇭🇰 香港节点, 🇲🇴 澳门节点]
 
   - name: 💬 AI
     type: fallback
     interval: 120
     lazy: false
-    proxies:
-      - 🇺🇸 夏威夷NAT
-      - 🇸🇬 狮城节点
-      - 🇭🇰 香港节点
-      - 🇨🇳 台湾节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🌐 家宽节点
-      - 🚀 手动切换
-      - DIRECT
+    proxies: [🇺🇸 夏威夷NAT, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🚀 手动切换, DIRECT]
 
   - name: 🌐 Google服务
     type: fallback
     interval: 120
     lazy: false
-    proxies:
-      - 🇺🇸 夏威夷NAT
-      - 🇸🇬 狮城节点
-      - 🇭🇰 香港节点
-      - 🇨🇳 台湾节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🌐 家宽节点
-      - 🚀 手动切换
-      - DIRECT
+    proxies: [🇺🇸 夏威夷NAT, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🚀 手动切换, DIRECT]
 
   - name: 🌍 国外媒体
     type: select
-    proxies: [🚀 节点选择, ♻️ 自动选择, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🛬 低价节点, 🇭🇰 低价香港, 🇨🇳 低价台湾, 🇺🇲 低价美国, 🇯🇵 低价日本, 🇸🇬 低价狮城, 🚀 手动切换, DIRECT]
+    proxies: [🚀 节点选择, ♻️ 自动选择, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🚀 手动切换, DIRECT]
 
   - name: 📲 海外社媒
     type: select
-    proxies: [🚀 节点选择, ♻️ 自动选择, 🇸🇬 狮城节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🛬 低价节点, 🇭🇰 低价香港, 🇨🇳 低价台湾, 🇺🇲 低价美国, 🇯🇵 低价日本, 🇸🇬 低价狮城, 🚀 手动切换, DIRECT]
+    proxies: [🚀 节点选择, ♻️ 自动选择, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🚀 手动切换, DIRECT]
 
   - name: 🌏 国内媒体
     type: select
-    proxies: [DIRECT, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇲🇴 澳门节点, 🛬 低价节点, 🇭🇰 低价香港, 🇨🇳 低价台湾, 🇺🇲 低价美国, 🇯🇵 低价日本, 🇸🇬 低价狮城, 🚀 手动切换]
+    proxies: [DIRECT, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇲🇴 澳门节点, 🚀 手动切换]
 
   - name: 📢 谷歌FCM
     type: select
-    proxies: [DIRECT, 🚀 节点选择, 🇺🇲 美国节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🛬 低价节点, 🚀 手动切换]
+    proxies: [DIRECT, 🚀 节点选择, 🇺🇲 美国节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🚀 手动切换]
 
   - name: Ⓜ️ 微软Bing
     type: select
-    proxies: [DIRECT, 🚀 节点选择, 🇺🇲 美国节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🛬 低价节点, 🇭🇰 低价香港, 🇨🇳 低价台湾, 🇺🇲 低价美国, 🇯🇵 低价日本, 🇸🇬 低价狮城, 🚀 手动切换]
+    proxies: [DIRECT, 🚀 节点选择, 🇺🇲 美国节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🚀 手动切换]
 
   - name: Ⓜ️ 微软云盘
     type: select
-    proxies: [DIRECT, 🚀 节点选择, 🇺🇲 美国节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🛬 低价节点, 🇭🇰 低价香港, 🇨🇳 低价台湾, 🇺🇲 低价美国, 🇯🇵 低价日本, 🇸🇬 低价狮城, 🚀 手动切换]
+    proxies: [DIRECT, 🚀 节点选择, 🇺🇲 美国节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🚀 手动切换]
 
   - name: Ⓜ️ 微软服务
     type: select
-    proxies: [DIRECT, 🚀 节点选择, 🇺🇲 美国节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🛬 低价节点, 🇭🇰 低价香港, 🇨🇳 低价台湾, 🇺🇲 低价美国, 🇯🇵 低价日本, 🇸🇬 低价狮城, 🚀 手动切换]
+    proxies: [DIRECT, 🚀 节点选择, 🇺🇲 美国节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🚀 手动切换]
 
   - name: 🍎 苹果服务
     type: select
-    proxies: [DIRECT, 🚀 节点选择, 🇺🇲 美国节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🛬 低价节点, 🇭🇰 低价香港, 🇨🇳 低价台湾, 🇺🇲 低价美国, 🇯🇵 低价日本, 🇸🇬 低价狮城, 🚀 手动切换]
+    proxies: [DIRECT, 🚀 节点选择, 🇺🇲 美国节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🚀 手动切换]
 
   - name: 🎮 游戏平台
     type: select
-    proxies: [DIRECT, 🚀 节点选择, 🇺🇲 美国节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🛬 低价节点, 🇭🇰 低价香港, 🇨🇳 低价台湾, 🇺🇲 低价美国, 🇯🇵 低价日本, 🇸🇬 低价狮城, 🚀 手动切换]
+    proxies: [DIRECT, 🚀 节点选择, 🇺🇲 美国节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🚀 手动切换]
 
   - name: 🎶 网易音乐
     type: select
@@ -244,63 +191,71 @@ proxy-groups:
 
   - name: 🐟 漏网之鱼
     type: select
-    proxies: [🚀 节点选择, ♻️ 自动选择, DIRECT, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🛬 低价节点, 🇭🇰 低价香港, 🇨🇳 低价台湾, 🇺🇲 低价美国, 🇯🇵 低价日本, 🇸🇬 低价狮城, 🚀 手动切换]
+    proxies: [🚀 节点选择, ♻️ 自动选择, DIRECT, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🚀 手动切换]
 
   # --- 地区分组 (使用 filter 正则自动筛选) ---
+  - name: 低倍率节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 120
+    tolerance: 50
+    include-all: true
+    filter: "(?i)0\\.[1-9]x"
+
   - name: 🇭🇰 香港节点
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 120
     tolerance: 50
-    use: [TAG]
-    filter: "(港|HK|hk|Hong Kong|HongKong|hongkong).*(1x|1X)"
+    include-all: true
+    filter: "(港|HK|hk|Hong Kong|HongKong|hongkong).*((?!2\\.[0-9]x).)*"
 
   - name: 🇨🇳 台湾节点
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 120
     tolerance: 50
-    use: [TAG]
-    filter: "(台|新北|彰化|TW|Taiwan).*(1x|1X)"
+    include-all: true
+    filter: "(台|新北|彰化|TW|Taiwan).*((?!2\\.[0-9]x).)*"
 
   - name: 🇯🇵 日本节点
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 120
     tolerance: 50
-    use: [TAG]
-    filter: "(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|JP|Japan).*(1x|1X)"
+    include-all: true
+    filter: "(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|JP|Japan).*((?!2\\.[0-9]x).)*"
 
   - name: 🇺🇲 美国节点
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 120
     tolerance: 50
-    use: [TAG]
-    filter: "(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States).*(1x|1X)"
+    include-all: true
+    filter: "(美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States).*((?!2\\.[0-9]x).)*"
 
   - name: 🇺🇲 美西节点
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 120
     tolerance: 50
-    use: [TAG]
-    filter: "(美西|硅谷|洛杉矶|圣何塞|圣克拉拉|西雅图|旧金山).*(1x|1X)"
+    include-all: true
+    filter: "(美西|硅谷|洛杉矶|圣何塞|圣克拉拉|西雅图|旧金山).*((?!2\\.[0-9]x).)*"
 
   - name: 🇸🇬 狮城节点
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 120
     tolerance: 50
-    use: [TAG]
-    filter: "(新加坡|坡|狮城|SG|Singapore).*(1x|1X)"
+    include-all: true
+    filter: "(新加坡|坡|狮城|SG|Singapore).*((?!2\\.[0-9]x).)*"
 
   - name: 🇰🇷 韩国节点
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 120
     tolerance: 50
-    use: [TAG]
+    include-all: true
     filter: "(KR|Korea|KOR|首尔|韩|韓)"
 
   - name: 🇲🇴 澳门节点
@@ -308,77 +263,13 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 120
     tolerance: 50
-    use: [TAG]
+    include-all: true
     filter: "(澳门|MO)"
 
   - name: 🌐 家宽节点
     type: select
-    use: [TAG]
+    include-all: true
     filter: "(家宽)"
-
-  # --- 低价分组 ---
-  - name: 🛬 低价节点
-    type: select
-    proxies:
-      - 🛬 低价自动
-      - 🛬 低价手动
-      - 🇭🇰 低价香港
-      - 🇨🇳 低价台湾
-      - 🇺🇲 低价美国
-      - 🇯🇵 低价日本
-      - 🇸🇬 低价狮城
-
-  - name: 🛬 低价自动
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 120
-    tolerance: 50
-    use: [MESL]
-    filter: ".*" # 这里根据需要调整，原配置似乎是全选但用于fallback
-
-  - name: 🛬 低价手动
-    type: select
-    use: [MESL]
-
-  - name: 🇭🇰 低价香港
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 120
-    tolerance: 50
-    use: [MESL]
-    filter: "(港|HK|hk|Hong Kong|HongKong|hongkong)" # 原配置没有过滤倍率
-
-  - name: 🇨🇳 低价台湾
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 120
-    tolerance: 50
-    use: [MESL]
-    filter: "(台|新北|彰化|TW|Taiwan)"
-
-  - name: 🇺🇲 低价美国
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 120
-    tolerance: 50
-    use: [MESL]
-    filter: "(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States)"
-
-  - name: 🇯🇵 低价日本
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 120
-    tolerance: 50
-    use: [MESL]
-    filter: "(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|JP|Japan)"
-
-  - name: 🇸🇬 低价狮城
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 120
-    tolerance: 50
-    use: [MESL]
-    filter: "(新加坡|坡|狮城|SG|Singapore)"
 
 # ========================
 # 5. 规则集 (替代 Ruleset)
@@ -449,7 +340,7 @@ rule-providers:
   Global / Domain: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Global/Global.list"}
   ProxyGFWlist: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list"}
   Private / Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/private.mrs"}
-  Download: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Download.list"}
+  # Download: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Download.list"}
   ByteDance: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/ByteDance/ByteDance.list"}
 
 # ========================
