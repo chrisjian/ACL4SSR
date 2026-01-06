@@ -266,10 +266,67 @@ proxy-groups:
     include-all: true
     filter: "(澳门|MO)"
 
-  - name: 🌐 家宽节点
+  # 1. 香港家宽 (自动选延迟最低)
+  - name: "🇭🇰 香港家宽"
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 120
+    include-all: true
+    filter: "(?=.*(香港|HK|Hong Kong))(?=.*(家宽|ISP|Residential))"
+
+  # 2. 台湾家宽
+  - name: "🇹🇼 台湾家宽"
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 120
+    include-all: true
+    filter: "(?=.*(台湾|TW|Taiwan|新北|台北))(?=.*(家宽|ISP|Residential))"
+
+  # 3. 日本家宽
+  - name: "🇯🇵 日本家宽"
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 120
+    include-all: true
+    filter: "(?=.*(日本|JP|Japan|东京|大阪))(?=.*(家宽|ISP|Residential))"
+
+  # 4. 美国家宽
+  - name: "🇺🇸 美国家宽"
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 120
+    include-all: true
+    filter: "(?=.*(美国|US|United States|洛杉矶|纽约))(?=.*(家宽|ISP|Residential))"
+
+  # 5. 新加坡家宽
+  - name: "🇸🇬 新加坡家宽"
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 120
+    include-all: true
+    filter: "(?=.*(新加坡|SG|Singapore))(?=.*(家宽|ISP|Residential))"
+
+  # 6. 整体家宽汇总 (包含以上五区 + 其他所有家宽)
+  # 采用 fallback 策略：按顺序择优，若前面的地区节点挂了自动切换
+  - name: "🌐 家宽节点"
+    type: fallback
+    url: http://www.gstatic.com/generate_204
+    interval: 120
+    proxies:
+      - "🇭🇰 香港家宽"
+      - "🇹🇼 台湾家宽"
+      - "🇯🇵 日本家宽"
+      - "🇺🇸 美国家宽"
+      - "🇸🇬 新加坡家宽"
+      - "♻️ 其他地区家宽"
+
+  # 7. 辅助分组：用于提取除了上述五区以外的家宽节点
+  - name: "♻️ 其他地区家宽"
     type: select
     include-all: true
-    filter: "(家宽)"
+    filter: "(?=.*(家宽|ISP|Residential))"
+    # 排除掉已命名的五个地区
+    exclude-filter: "香港|HK|台湾|TW|日本|JP|美国|US|新加坡|SG"
 
 # ========================
 # 5. 规则集 (替代 Ruleset)
