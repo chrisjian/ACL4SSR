@@ -1,6 +1,8 @@
 # 内容：补充直连遗漏规则
 DOMAIN-KEYWORD,bytedance
 DOMAIN-KEYWORD,lark
+DOMAIN-KEYWORD,feishu
+DOMAIN-SUFFIX,tiktok-row.net
 DOMAIN-SUFFIX,tiktok.net
 DOMAIN-KEYWORD,zijie
 DOMAIN-KEYWORD,tagss
