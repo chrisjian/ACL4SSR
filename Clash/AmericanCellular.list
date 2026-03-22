@@ -1,0 +1,21 @@
+# --- Red Pocket 核心激活与权限 ---
+DOMAIN-SUFFIX,fpconfig.net
+DOMAIN-SUFFIX,911-gt2-rs.com
+DOMAIN-SUFFIX,redpocket.com
+
+# --- 证书验证 (OCSP) ---
+DOMAIN-SUFFIX,usertrust.com
+DOMAIN-SUFFIX,sectigo.com
+
+# --- AT&T (GSMA) 语音网关与验证 ---
+DOMAIN-SUFFIX,att.net
+DOMAIN-KEYWORD,att-vowifi
+IP-CIDR,107.122.0.0/16,no-resolve
+
+# --- T-Mobile (GSMT) 语音网关 ---
+DOMAIN-SUFFIX,pub.3gppnetwork.org
+DOMAIN-KEYWORD,t-mobile-vowifi
+
+# --- 额外辅助域名 ---
+DOMAIN-SUFFIX,entitlement.mobile.att.net
+DOMAIN-SUFFIX,vvm.mobile.att.net
