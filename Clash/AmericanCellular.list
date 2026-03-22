@@ -2,6 +2,8 @@
 DOMAIN-SUFFIX,fpconfig.net
 DOMAIN-SUFFIX,911-gt2-rs.com
 DOMAIN-SUFFIX,redpocket.com
+DOMAIN,apps.deploypulse.io
+DOMAIN-SUFFIX,posthog.com
 
 # --- 证书验证 (OCSP) ---
 DOMAIN-SUFFIX,usertrust.com
