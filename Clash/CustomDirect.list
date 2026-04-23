@@ -13,3 +13,5 @@ DOMAIN-SUFFIX,sgsnssdk.com
 DOMAIN-SUFFIX,dailygn.com
 DOMAIN-SUFFIX,snssdk.com
 DOMAIN,de.171109.xyz
+PROCESS-NAME-REGEX,(?i)lark
+PROCESS-NAME-REGEX,(?i)feishu
