@@ -1,8 +1,7 @@
 # 内容：补充AI遗漏规则
-DOMAIN-KEYWORD,grok
-DOMAIN-SUFFIX,x.ai
 DOMAIN-KEYWORD,anthropic
 DOMAIN-KEYWORD,chatgpt
 DOMAIN-KEYWORD,claude
 DOMAIN-KEYWORD,openai
 GEOSITE,category-ai-!cn
+DOMAIN-SUFFIX,statcounter.com
