@@ -9,6 +9,7 @@ DOMAIN-SUFFIX,cohere.com
 DOMAIN-SUFFIX,ip-api.com
 DOMAIN-SUFFIX,agkn.com
 DOMAIN-SUFFIX,tktn.at
+DOMAIN,checkip.amazonaws.com
 
 # Talkatone 服务 IP
 IP-CIDR,50.117.27.0/24,no-resolve
