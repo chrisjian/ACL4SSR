@@ -130,9 +130,10 @@ proxy-groups:
     type: select
     proxies: [🚀 节点选择, ♻️ 自动选择, 🇸🇬 狮城节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🛬 低价节点, 🇭🇰 低价香港, 🇨🇳 低价台湾, 🇺🇲 低价美国, 🇯🇵 低价日本, 🇸🇬 低价狮城, 🚀 手动切换, DIRECT]
 
+  # 美卡、美国银行与 PayPal/电子钱包统一优先使用美国家宽
   - name: 💲 美卡
     type: select
-    proxies: [🚀 节点选择, ♻️ 自动选择, 🇸🇬 狮城节点, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🛬 低价节点, 🇭🇰 低价香港, 🇨🇳 低价台湾, 🇺🇲 低价美国, 🇯🇵 低价日本, 🇸🇬 低价狮城, 🚀 手动切换, DIRECT]
+    proxies: [🇺🇸 美国家宽, 🇺🇲 美国节点, 🚀 手动切换, DIRECT]
 
   - name: 📹 油管视频
     type: select
@@ -315,6 +316,12 @@ proxy-groups:
     type: select
     use: [TAG]
     filter: "(家宽)"
+
+  # 独立美国住宅出口；仅收录美国/US + 家宽/ISP/Residential 节点
+  - name: 🇺🇸 美国家宽
+    type: select
+    use: [TAG]
+    filter: "(?=.*(美国|US|United States|洛杉矶|纽约))(?=.*(家宽|ISP|Residential))"
 
   # --- 低价分组 ---
   - name: 🛬 低价节点
