@@ -1,1 +1,92 @@
+# 美国银行 / 信用卡 / PayPal 及电子钱包
+# Shadowrocket RULE-SET 与 Mihomo/Clash classical 规则集通用；统一交由 💲 美卡 策略组选择出口
+# 只匹配金融服务自有域名，不使用 DOMAIN-KEYWORD、共享 CDN/分析 SDK 或不稳定 IP 段
+# 银行及支付 App 的共享第三方登录/风控资源请根据连接日志单独核对，勿整域添加
+
+# PayPal 与美国电子钱包
+DOMAIN-SUFFIX,paypal.com
+DOMAIN-SUFFIX,paypalobjects.com
+DOMAIN-SUFFIX,paypal.me
+DOMAIN-SUFFIX,venmo.com
+DOMAIN-SUFFIX,cash.app
+DOMAIN-SUFFIX,cash.me
+DOMAIN-SUFFIX,zelle.com
+DOMAIN-SUFFIX,zellepay.com
+DOMAIN-SUFFIX,wise.com
+DOMAIN-SUFFIX,transferwise.com
+DOMAIN-SUFFIX,remitly.com
+DOMAIN-SUFFIX,payoneer.com
+
+# 传统银行、数字银行与信用卡
 DOMAIN-SUFFIX,americanexpress.com
+DOMAIN-SUFFIX,aexp.com
+DOMAIN-SUFFIX,chase.com
+DOMAIN-SUFFIX,citi.com
+DOMAIN-SUFFIX,thankyou.com
+DOMAIN-SUFFIX,capitalone.com
+DOMAIN-SUFFIX,bankofamerica.com
+DOMAIN-SUFFIX,wellsfargo.com
+DOMAIN-SUFFIX,discover.com
+DOMAIN-SUFFIX,usbank.com
+DOMAIN-SUFFIX,pnc.com
+DOMAIN-SUFFIX,truist.com
+DOMAIN-SUFFIX,tdbank.com
+DOMAIN-SUFFIX,td.com
+DOMAIN-SUFFIX,marcus.com
+DOMAIN-SUFFIX,goldmansachs.com
+DOMAIN-SUFFIX,fnbo.com
+DOMAIN-SUFFIX,citizensbank.com
+DOMAIN-SUFFIX,key.com
+DOMAIN-SUFFIX,regions.com
+DOMAIN-SUFFIX,huntington.com
+DOMAIN-SUFFIX,creditonebank.com
+DOMAIN-SUFFIX,ally.com
+DOMAIN-SUFFIX,sofi.com
+DOMAIN-SUFFIX,chime.com
+DOMAIN-SUFFIX,velobank.com
+DOMAIN-SUFFIX,santanderbank.com
+
+# 信用社
+DOMAIN-SUFFIX,alliantcreditunion.com
+DOMAIN-SUFFIX,navyfederal.org
+DOMAIN-SUFFIX,penfed.org
+DOMAIN-SUFFIX,firsttechfed.com
+
+# 联名卡、店卡与 Bilt
+DOMAIN-SUFFIX,barclaycardus.com
+DOMAIN-SUFFIX,synchrony.com
+DOMAIN-SUFFIX,synchronybank.com
+DOMAIN-SUFFIX,mysynchrony.com
+DOMAIN-SUFFIX,comenity.net
+DOMAIN-SUFFIX,breadfinancial.com
+DOMAIN-SUFFIX,bilt.com
+DOMAIN-SUFFIX,biltrewards.com
+DOMAIN-SUFFIX,cardless.com
+
+# 券商与投资账户
+DOMAIN-SUFFIX,schwab.com
+DOMAIN-SUFFIX,fidelity.com
+DOMAIN-SUFFIX,vanguard.com
+DOMAIN-SUFFIX,interactivebrokers.com
+DOMAIN-SUFFIX,ibkr.com
+DOMAIN-SUFFIX,robinhood.com
+DOMAIN-SUFFIX,webull.com
+DOMAIN-SUFFIX,webullapp.com
+DOMAIN-SUFFIX,etrade.com
+DOMAIN-SUFFIX,merrilledge.com
+DOMAIN-SUFFIX,ml.com
+
+# 专用银行连接基础设施
+DOMAIN-SUFFIX,plaid.com
+DOMAIN-SUFFIX,yodlee.com
+
+# 信用报告与信用分数
+DOMAIN-SUFFIX,experian.com
+DOMAIN-SUFFIX,equifax.com
+DOMAIN-SUFFIX,transunion.com
+DOMAIN-SUFFIX,creditkarma.com
+DOMAIN-SUFFIX,myfico.com
+DOMAIN-SUFFIX,annualcreditreport.com
+
+# Apple Card：仅指定卡片管理域名，不代理 apple.com、Apple Pay 等共享服务
+DOMAIN,card.apple.com
