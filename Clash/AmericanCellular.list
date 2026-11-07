@@ -1,15 +1,32 @@
-# USA Wi-Fi Calling (Red Pocket GSMA/AT&T, Red Pocket GSMT & Ultra/T-Mobile)
-# Classical rule provider for Shadowrocket and Mihomo; caller assigns 📶 USA Cellular.
-# FQDNs only. Do not use a blanket pub.3gppnetwork.org / att.net / analysis-CDN suffix.
-# UDP 500/4500 for IP-only ePDG sessions must be handled in caller rules / gateway routing.
-
-# Red Pocket account & AT&T Wi-Fi Calling (AT&T published FQDNs)
+# --- Red Pocket 核心激活与权限 ---
+DOMAIN-SUFFIX,fpconfig.net
+DOMAIN-SUFFIX,911-gt2-rs.com
 DOMAIN-SUFFIX,redpocket.com
+DOMAIN,apps.deploypulse.io
+DOMAIN-SUFFIX,posthog.com
+
+# --- 证书验证 (OCSP) ---
+DOMAIN-SUFFIX,usertrust.com
+DOMAIN-SUFFIX,sectigo.com
+
+# --- AT&T (GSMA) 语音网关与验证 ---
+DOMAIN-SUFFIX,att.net
+DOMAIN-KEYWORD,att-vowifi
+IP-CIDR,107.122.0.0/16,no-resolve
+
+# --- T-Mobile (GSMT) 语音网关 ---
+DOMAIN-SUFFIX,pub.3gppnetwork.org
+DOMAIN-KEYWORD,t-mobile-vowifi
+
+# --- 额外辅助域名 ---
+DOMAIN-SUFFIX,entitlement.mobile.att.net
+DOMAIN-SUFFIX,vvm.mobile.att.net
+
+# --- 补充：AT&T / Red Pocket GSMA Wi-Fi Calling 具体网关及权限域名 ---
 DOMAIN,epdg.epc.att.net
 DOMAIN,sentitlement2.mobile.att.net
-DOMAIN,vvm.mobile.att.net
 
-# Ultra Mobile / Red Pocket GSMT: T-Mobile ePDG
+# --- 补充：Ultra Mobile / Red Pocket GSMT (T-Mobile) ePDG 与证书吊销 ---
 DOMAIN,ss.epdg.epc.mnc260.mcc310.pub.3gppnetwork.org
 DOMAIN,epdg.epc.mnc260.mcc310.pub.3gppnetwork.org
 DOMAIN,ss.epdg.epc.geo.mnc260.mcc310.pub.3gppnetwork.org
