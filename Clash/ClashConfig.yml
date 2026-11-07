@@ -11,6 +11,48 @@ external-controller: :9090
 ipv6: true
 
 # ========================
+# DNS: Wi-Fi Calling endpoints must resolve to REAL IP via encrypted US-exit DoH.
+# Only the carrier subdomains below use US residential DNS; others keep default DNS.
+# For phone/LAN DNS enforcement, enable TUN dns-hijack or redirect LAN DNS to mihomo.
+# ========================
+dns:
+  enable: true
+  listen: 127.0.0.1:1053
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-filter:
+    - "*.lan"
+    - "epdg.epc.att.net"
+    - "*.mnc260.mcc310.pub.3gppnetwork.org"
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  proxy-server-nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  nameserver-policy:
+    "epdg.epc.att.net": "https://1.1.1.1/dns-query#🇺🇸 美国家宽"
+    "+.mobile.att.net": "https://1.1.1.1/dns-query#🇺🇸 美国家宽"
+    "+.mnc260.mcc310.pub.3gppnetwork.org": "https://1.1.1.1/dns-query#🇺🇸 美国家宽"
+
+# Optional when this file runs Mihomo TUN locally (router/OS):
+# tun:
+#   enable: true
+#   stack: system
+#   auto-route: true
+#   dns-mode: hijack
+#   dns-hijack:
+#     - any:53
+#     - tcp://any:53
+#   strict-route: true
+# On a LAN router, clients must USE its DNS, and firewall must enforce/redirect
+# port 53. DoH/DoT clients cannot be transparently hijacked by these rules.
+
+
+# ========================
 # 2. 节点源 (替代 Subconverter 的部分)
 # ========================
 proxy-providers:
@@ -94,6 +136,11 @@ proxy-groups:
   - name: 🎮 GooglePlay
     type: select
     proxies: [DIRECT, 🚀 节点选择, ♻️ 自动选择, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇰🇷 韩国节点, 🇲🇴 澳门节点, 🌐 家宽节点, 🚀 手动切换]
+
+  # Red Pocket GSMA (AT&T) / Ultra Mobile (T-Mobile) Wi-Fi Calling
+  - name: 📶 USA Cellular
+    type: select
+    proxies: [🇺🇸 美国家宽, 🇺🇲 美国节点, 🚀 手动切换, DIRECT]
 
   # 美卡、美国银行与 PayPal/电子钱包统一优先使用美国家宽
   - name: 💲 美卡
@@ -333,6 +380,7 @@ rule-providers:
   China / Domain: {<<: *domain, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/cn.mrs"}
   China / IP: {<<: *ip, url: "https://gh-proxy.com/github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geoip/cn.mrs"}
   AmericanCard: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/chrisjian/ACL4SSR/master/Clash/AmericanCard.list"}
+  AmericanCellular: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/chrisjian/ACL4SSR/master/Clash/AmericanCellular.list"}
   CustomDirect: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/chrisjian/ACL4SSR/refs/heads/master/Clash/CustomDirect.list"}
   GooglePlay: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/chrisjian/ACL4SSR/master/Clash/GooglePlay.list"}
   Lan: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list"}
@@ -397,6 +445,12 @@ rule-providers:
 # 6. 规则匹配 (路由逻辑)
 # ========================
 rules:
+  # Wi-Fi Calling: only vetted domains, then the carrier-owned T-Mobile IKEv2 subnet.
+  - RULE-SET,AmericanCellular,📶 USA Cellular
+  # Official T-Mobile WFC 2.0 208.54.0.0/16; only UDP 500 or 4500.
+  - AND,((IP-CIDR,208.54.0.0/16),(AND,((NETWORK,UDP),(OR,((DST-PORT,500),(DST-PORT,4500)))))),📶 USA Cellular
+  # For IP-only AT&T ePDG flows on a router, assign the phone a fixed LAN IP and opt in:
+  # - AND,((SRC-IP-CIDR,192.168.1.50/32),(AND,((NETWORK,UDP),(OR,((DST-PORT,500),(DST-PORT,4500)))))),📶 USA Cellular
   - RULE-SET,AmericanCard,💲 美卡
   - RULE-SET,CustomDirect,🎯 全球直连
   - RULE-SET,GooglePlay,🎮 GooglePlay
