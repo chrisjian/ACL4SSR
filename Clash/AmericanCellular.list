@@ -32,9 +32,7 @@ DOMAIN,epdg.epc.mnc260.mcc310.pub.3gppnetwork.org
 DOMAIN,ss.epdg.epc.geo.mnc260.mcc310.pub.3gppnetwork.org
 DOMAIN,crl.t-mobile.com
 
-# --- 补充：Ultra Mobile 官网、T-Mobile VoWiFi 权限及官方 Wi-Fi Calling 网段 ---
-# 官网用于账户、Wi-Fi Calling 启用及 E911 网页操作；并非 ePDG 地址
-DOMAIN-SUFFIX,ultramobile.com
+# --- 补充：T-Mobile VoWiFi 权限及官方 Wi-Fi Calling 网段 ---
 # Ultra/Mint iOS 运营商配置：VoWiFi entitlement / carrier authorization
 DOMAIN,eas3.msg.t-mobile.com
 # T-Mobile WFC 2.0 官方 IPv4 网段；仅用于分流，实际需代理支持 UDP 500/4500
