@@ -21,3 +21,19 @@ DOMAIN-KEYWORD,t-mobile-vowifi
 # --- 额外辅助域名 ---
 DOMAIN-SUFFIX,entitlement.mobile.att.net
 DOMAIN-SUFFIX,vvm.mobile.att.net
+
+# --- 补充：AT&T / Red Pocket GSMA Wi-Fi Calling 具体网关及权限域名 ---
+DOMAIN,epdg.epc.att.net
+DOMAIN,sentitlement2.mobile.att.net
+
+# --- 补充：Ultra Mobile / Red Pocket GSMT (T-Mobile) ePDG 与证书吊销 ---
+DOMAIN,ss.epdg.epc.mnc260.mcc310.pub.3gppnetwork.org
+DOMAIN,epdg.epc.mnc260.mcc310.pub.3gppnetwork.org
+DOMAIN,ss.epdg.epc.geo.mnc260.mcc310.pub.3gppnetwork.org
+DOMAIN,crl.t-mobile.com
+
+# --- 补充：T-Mobile VoWiFi 权限及官方 Wi-Fi Calling 网段 ---
+# Ultra/Mint iOS 运营商配置：VoWiFi entitlement / carrier authorization
+DOMAIN,eas3.msg.t-mobile.com
+# T-Mobile WFC 2.0 官方 IPv4 网段；仅用于分流，实际需代理支持 UDP 500/4500
+IP-CIDR,208.54.0.0/16,no-resolve
