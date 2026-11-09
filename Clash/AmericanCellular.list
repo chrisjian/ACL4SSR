@@ -12,6 +12,8 @@ DOMAIN-SUFFIX,sectigo.com
 # --- AT&T (GSMA) 语音网关与验证 ---
 DOMAIN-SUFFIX,att.net
 DOMAIN-KEYWORD,att-vowifi
+DOMAIN-SUFFIX,att-idns.net
+DOMAIN-SUFFIX,na-att-idns.net
 IP-CIDR,107.122.0.0/16,no-resolve
 
 # --- T-Mobile (GSMT) 语音网关 ---
